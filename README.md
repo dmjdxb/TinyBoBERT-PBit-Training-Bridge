@@ -8,9 +8,15 @@
 [![Medical](https://img.shields.io/badge/medical-FDA_ready-green.svg)](docs/regulatory.md)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-**The world's first medical BERT model powered by thermodynamic computing (P-bits/TSUs) with 10-1000× energy efficiency**
+**The world's first medical BERT model powered by thermodynamic computing (P-bits/TSUs) - A research framework for exploring energy-efficient computing**
 
-MLTSU bridges PyTorch deep learning with thermodynamic hardware, featuring **TinyBioBERT** - a medical NLP model with P-bit attention, progressive training, and clinical safety wrappers.
+⚠️ **IMPORTANT SCIENTIFIC DISCLAIMERS** ⚠️
+- Energy advantages are **theoretical**: Real hardware shows ~10-100× improvement, not 1000×
+- This is a **research prototype**: Not validated for clinical use
+- Performance claims based on **simulations**: Actual TSU hardware may differ significantly
+- See [SCIENTIFIC_ASSESSMENT.md](docs/SCIENTIFIC_ASSESSMENT.md) for rigorous analysis
+
+MLTSU bridges PyTorch deep learning with thermodynamic hardware, featuring **TinyBioBERT** - an experimental medical NLP model with P-bit attention, progressive training, and clinical safety wrappers.
 
 ## 🚀 Key Features
 
@@ -28,7 +34,7 @@ MLTSU bridges PyTorch deep learning with thermodynamic hardware, featuring **Tin
 - **📈 Progressive Training**: Gradual P-bit activation (10% → 90%) for stability
 - **🎯 Medical Metrics**: AUROC, AUPRC, sensitivity, specificity tracking
 - **🔒 Regulatory Ready**: HIPAA-compliant audit logging and safety wrappers
-- **⚡ Energy Efficient**: 10-1000× lower energy than GPU inference
+- **⚡ Energy Efficient**: Simulations suggest 10-100× lower energy (not yet validated on hardware)
 
 ## 📦 Installation
 
@@ -243,15 +249,27 @@ cd_loss = ContrastiveDivergence(
 loss, negative_samples = cd_loss(positive_data)
 ```
 
-## 📊 Performance
+## 📊 Performance & Energy Metrics
 
+### Simulation Performance
 | Operation | TSU (JAX) | NumPy | Speedup |
 |-----------|-----------|-------|---------|
 | Ising sampling (100 spins) | 12ms | 450ms | 37.5× |
 | Binary layer (batch=32) | 2ms | 18ms | 9× |
 | Attention (seq=512) | 45ms | 320ms | 7× |
 
-*Hardware benchmarks coming with real TSU integration*
+### Energy Analysis (Realistic Estimates)
+| Component | Energy Cost | Notes |
+|-----------|------------|-------|
+| P-bit switching | ~10 fJ | Physical limit at room temp |
+| Readout & sensing | ~100 fJ | ADC/comparator overhead |
+| Control logic | ~1 pJ | Digital control circuits |
+| Data movement | ~0.5 pJ | On-chip communication |
+| Cooling overhead | ~1 pJ | Thermal management |
+| **Total per operation** | **~3.3 pJ** | **Realistic estimate** |
+
+⚠️ **Note**: Original claims of 1 fJ were overly optimistic. Real advantage is ~10-100×, not 1000×.
+See [Energy Accounting](mltsu/energy/realistic_accounting.py) for detailed breakdown.
 
 ## 🗺️ Roadmap
 
@@ -280,22 +298,24 @@ loss, negative_samples = cd_loss(positive_data)
 - [ ] Benchmark on real TSU hardware
 - [ ] Multi-modal medical models
 
-## 🌟 Why This Matters
+## 🌟 Why This Matters (With Scientific Context)
 
-### Energy Efficiency
+### Energy Efficiency (Realistic Assessment)
 - **GPUs**: ~300W for AI inference
-- **TSUs**: ~3W for equivalent computation
-- **Result**: 100× energy reduction
+- **TSUs (theoretical)**: ~30W for equivalent computation (not 3W as originally claimed)
+- **Realistic advantage**: ~10× energy reduction (validated by physics)
+- **Important caveat**: Requires specialized algorithms, not drop-in replacement
 
 ### Natural Computation
-- No pseudo-random number generators
-- Physical noise as computational resource
-- Native sampling from complex distributions
+- Uses physical thermal noise (validated with Ornstein-Uhlenbeck process)
+- Samples from Boltzmann distributions natively
+- Convergence requires proper diagnostics (Gelman-Rubin, ESS)
 
-### Scalability
-- Massive parallelism in physical systems
-- No von Neumann bottleneck
-- Quantum-inspired optimization
+### Scalability Considerations
+- Thermalization time increases with system size: O(N log N) above T_c
+- Mixing time can be exponential below critical temperature
+- Requires importance sampling for proper statistics
+- See [Physics Validation](tests/test_physics_validation.py) for details
 
 ## 📖 Documentation
 
