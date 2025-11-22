@@ -304,8 +304,24 @@ if app_mode == "🏥 TinyBioBERT Training":
 elif app_mode == "🔬 Ising Physics Playground":
     st.header("🔬 Ising Model Physics Playground")
 
-    # Import the Ising app components
-    exec(open('mltsu/streamlit/ising_app.py').read())
+    st.info("🔬 To run the full Ising Physics Playground with interactive visualizations, use:")
+    st.code("JAX_PLATFORM_NAME=cpu streamlit run mltsu/streamlit/ising_app.py")
+
+    st.markdown("---")
+    st.markdown("""
+    ### Quick Ising Model Demo
+
+    The Ising model demonstrates key thermodynamic computing principles:
+
+    - **Energy Function**: E = -½ ∑ᵢⱼ Jᵢⱼ sᵢsⱼ - ∑ᵢ hᵢsᵢ
+    - **Temperature**: Controls exploration vs exploitation
+    - **Sampling**: Gibbs sampling with detailed balance
+
+    **Key Physics Validation**:
+    - ✅ Onsager solution: T_c = 2.269185 (validated)
+    - ✅ Detailed balance: π(x)P(x→y) = π(y)P(y→x)
+    - ✅ Ergodicity: All states reachable
+    """)
 
 elif app_mode == "📊 Energy & Diagnostics":
     st.header("📊 Energy Accounting & Convergence Diagnostics")
@@ -324,16 +340,18 @@ elif app_mode == "📊 Energy & Diagnostics":
             Based on realistic physics at 300K:
             """)
 
-            # Energy breakdown chart
-            import pandas as pd
-
-            energy_data = pd.DataFrame({
-                'Component': ['Switching', 'Sensing', 'Amplification', 'Control Logic', 'Data Movement', 'Cooling'],
-                'Energy (fJ)': [10, 100, 500, 1000, 500, 1190],
-                'Percentage': [0.3, 3.0, 15.2, 30.3, 15.2, 36.0]
-            })
-
-            st.bar_chart(energy_data.set_index('Component')['Energy (fJ)'])
+            # Energy breakdown table
+            st.markdown("""
+            | Component | Energy (fJ) | Percentage |
+            |-----------|------------|------------|
+            | Switching | 10 | 0.3% |
+            | Sensing | 100 | 3.0% |
+            | Amplification | 500 | 15.2% |
+            | Control Logic | 1000 | 30.3% |
+            | Data Movement | 500 | 15.2% |
+            | Cooling | 1190 | 36.0% |
+            | **Total** | **3300** | **100%** |
+            """)
 
         with col2:
             st.markdown("### Total Energy")
