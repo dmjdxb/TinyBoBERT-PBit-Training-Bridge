@@ -1,7 +1,8 @@
-# 🌉 TinyBioBERT P-bit Training Bridge
+# 🌉 MLTSU v0.1.0 - PyTorch to Thermodynamic Computing Bridge
 
 ## PyTorch → Thermodynamic Sampling Units for Medical NLP
 
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/dmjdxb/TinyBoBERT-PBit-Training-Bridge)
 [![Python](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/pytorch-2.0+-red.svg)](https://pytorch.org/)
 [![JAX](https://img.shields.io/badge/jax-0.4+-green.svg)](https://github.com/google/jax)
@@ -27,6 +28,16 @@ MLTSU bridges PyTorch deep learning with thermodynamic hardware, featuring **Tin
 - **🎯 Binary Layers**: TSU-powered binary sampling with gradient flow via STE
 - **🌊 Noise Generation**: Thermodynamic noise for regularization and diffusion models
 - **🔬 Ising Solver**: Optimization problems solved using physical dynamics
+
+### 🆕 New in v0.1.0
+- **🔄 Reproducibility Modes**: Three modes for different research needs
+  - Fixed (seed=42): Exact reproducibility for papers
+  - Statistical (5 seeds): Shows mean ± std deviation
+  - Random: True stochastic behavior
+- **📊 Real-time Performance Metrics**: Live energy comparison (GPU vs TSU)
+- **💾 Export Functionality**: JSON export for statistical analysis
+- **🚀 Application Launcher**: Unified interface for all MLTSU apps
+- **📈 Convergence Diagnostics**: Gelman-Rubin, ESS, MCSE metrics
 
 ### 🏥 TinyBioBERT: Medical NLP with P-bits
 - **🧬 Medical BERT**: Compact BERT for medical Named Entity Recognition (NER)
@@ -64,7 +75,22 @@ JAX_PLATFORM_NAME=cpu python examples/demo_bridge.py
 
 ## 🎯 Quick Demo
 
-### 1. TinyBioBERT Medical NLP Demo
+### 🚀 Launch All Applications (Recommended)
+
+```bash
+# Start the unified launcher
+streamlit run mltsu/streamlit/launcher.py
+```
+
+Visit http://localhost:8501 for the launcher interface with:
+- **TinyBioBERT**: Medical NLP with P-bits (port 8502)
+- **Ising Playground**: Interactive physics simulations (port 8503)
+- **Performance Metrics**: Real-time energy comparisons
+- **Export Tools**: Statistical analysis capabilities
+
+### Individual Applications
+
+#### 1. TinyBioBERT Medical NLP Demo
 
 ```bash
 # Quick test of TinyBioBERT
@@ -74,28 +100,35 @@ python demo_tinybiobert.py
 python train_tiny_biobert.py --demo_mode
 
 # Interactive medical NER visualization
-streamlit run mltsu/streamlit/biobert_demo.py
+JAX_PLATFORM_NAME=cpu streamlit run mltsu/streamlit/biobert_demo.py --server.port 8502
 ```
 
-### 2. Run the Complete Bridge Demo
+#### 2. Interactive Ising Playground
+
+```bash
+# Full-featured Ising app with reproducibility modes
+JAX_PLATFORM_NAME=cpu streamlit run mltsu/streamlit/ising_app.py --server.port 8503
+
+# Simple Ising demo
+JAX_PLATFORM_NAME=cpu streamlit run mltsu/streamlit/ising_app_simple.py
+```
+
+Features:
+- **Reproducibility Modes**: Fixed/Statistical/Random sampling
+- **Live Metrics**: Energy reduction visualization
+- **Export**: JSON data for publications
+
+#### 3. Complete Bridge Demo
 
 ```bash
 JAX_PLATFORM_NAME=cpu python examples/demo_bridge.py
 ```
 
-This demonstrates:
+Demonstrates:
 - TSU binary layers and noise generation
 - Ising model optimization
-- TinyThermoLM - a complete language model using thermodynamic attention
+- TinyThermoLM - complete language model using thermodynamic attention
 - Training with energy-based objectives
-
-### 3. Interactive Ising Playground
-
-```bash
-streamlit run mltsu/streamlit/ising_app_simple.py
-```
-
-Visit http://localhost:8501 to interact with the Ising model solver.
 
 ## 🏗️ Architecture
 
@@ -251,6 +284,13 @@ loss, negative_samples = cd_loss(positive_data)
 
 ## 📊 Performance & Energy Metrics
 
+### Live Performance Display
+The Ising Playground now shows real-time energy comparisons:
+- **GPU Baseline**: 22.7 kJ for equivalent computation
+- **TSU Simulation**: 0.02 J (20 mJ)
+- **Energy Reduction**: 1,135,000× (99.9999% less energy)
+- *Note: Simulated values - actual hardware pending*
+
 ### Simulation Performance
 | Operation | TSU (JAX) | NumPy | Speedup |
 |-----------|-----------|-------|---------|
@@ -273,7 +313,7 @@ See [Energy Accounting](mltsu/energy/realistic_accounting.py) for detailed break
 
 ## 🗺️ Roadmap
 
-### ✅ Completed
+### ✅ Completed (v0.1.0)
 - [x] Core TSUBackend interface
 - [x] JAX-based simulator
 - [x] Thermodynamic attention
@@ -285,6 +325,11 @@ See [Energy Accounting](mltsu/energy/realistic_accounting.py) for detailed break
 - [x] **Medical safety wrapper for FDA compliance**
 - [x] **AUROC/AUPRC medical metrics**
 - [x] **Energy validation benchmarks**
+- [x] **Reproducibility modes** (Fixed/Statistical/Random)
+- [x] **Real-time performance metrics display**
+- [x] **JSON export for statistical analysis**
+- [x] **Unified application launcher**
+- [x] **Convergence diagnostics** (Gelman-Rubin, ESS, MCSE)
 
 ### 🚧 In Progress
 - [ ] Integration tests for safety features
@@ -319,10 +364,16 @@ See [Energy Accounting](mltsu/energy/realistic_accounting.py) for detailed break
 
 ## 📖 Documentation
 
+### Core Documentation
 - [Architecture Overview](docs/architecture.md)
 - [API Reference](docs/api.md)
 - [Hardware Integration Guide](docs/hardware.md)
 - [Energy-Based Models Tutorial](docs/ebm_tutorial.md)
+
+### Recent Improvements
+- [Reproducibility Fix](docs/REPRODUCIBILITY_FIX.md) - How we fixed the seed issue
+- [Polish Improvements](docs/POLISH_IMPROVEMENTS.md) - v0.1.0 enhancements
+- [Scientific Assessment](docs/SCIENTIFIC_ASSESSMENT.md) - Rigorous analysis
 
 ## 🤝 Contributing
 
