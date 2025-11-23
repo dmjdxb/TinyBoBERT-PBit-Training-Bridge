@@ -7,7 +7,7 @@
 [![PyTorch](https://img.shields.io/badge/pytorch-2.0+-red.svg)](https://pytorch.org/)
 [![JAX](https://img.shields.io/badge/jax-0.4+-green.svg)](https://github.com/google/jax)
 [![Medical](https://img.shields.io/badge/medical-FDA_ready-green.svg)](docs/regulatory.md)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
 **The world's first medical BERT model powered by thermodynamic computing (P-bits/TSUs) - A research framework for exploring energy-efficient computing**
 
@@ -401,7 +401,14 @@ If you use TinyBioBERT or MLTSU in your research:
 
 ## 📜 License
 
-MIT License - see [LICENSE](LICENSE) for details.
+Apache License 2.0 - see [LICENSE](LICENSE) for details.
+
+This project is licensed under the Apache License 2.0, which provides:
+- **Patent protection**: Explicit patent grant and retaliation clause
+- **Attribution requirements**: Must retain copyright notices
+- **Commercial use**: Allowed with proper attribution
+- **Modification**: Allowed with notice of changes
+- **Distribution**: Allowed under same license
 
 ## 🙏 Acknowledgments
 

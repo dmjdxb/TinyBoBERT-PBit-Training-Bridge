@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Machine Learning Thermodynamic Sampling Units - PyTorch to TSU Bridge"
 readme = "README.md"
 requires-python = ">=3.9"
-license = {text = "MIT"}
+license = {text = "Apache-2.0"}
 authors = [
     {name = "MLTSU Team", email = "mltsu@example.com"}
 ]
@@ -16,7 +16,7 @@ keywords = ["thermodynamic computing", "probabilistic computing", "p-bits", "isi
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
