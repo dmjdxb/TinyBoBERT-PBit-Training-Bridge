@@ -370,8 +370,6 @@ We welcome contributions! Areas where we need help:
 - Hardware backend implementations
 - Documentation and tutorials
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
 ## 📄 Citation
 
 If you use TinyBioBERT or MLTSU in your research:
@@ -380,7 +378,7 @@ If you use TinyBioBERT or MLTSU in your research:
 @software{mltsu2024,
   title = {MLTSU v0.1.0: Bridging PyTorch and Thermodynamic Computing},
   author = {Johnson, David},
-  year = {2024},
+  year = {2025},
   url = {https://github.com/dmjdxb/MLTSU-v0.1.0---Bridging-PyTorch-and-Thermodynamic-Computing}
 }
 ```
@@ -408,5 +406,3 @@ This project is licensed under the Apache License 2.0, which provides:
 - **Author**: David Johnson
 
 ---
-
-**🏥 Medical AI Revolution**: TinyBioBERT demonstrates how P-bit computing can transform medical NLP with 10-1000× energy savings while maintaining clinical safety standards. The future of sustainable, FDA-compliant medical AI is here! 🧬⚡🌉
